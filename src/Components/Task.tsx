@@ -43,7 +43,7 @@ function Task() {
       </button>
     );
   });
-  return <>{itemList}</>;
+  return <div className="flex flex-col gap-3">{itemList}</div>;
 }
 
 export default Task;
