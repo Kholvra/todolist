@@ -6,14 +6,14 @@ import Modal from "./Components/Modal";
 function App() {
   const [taskItems, setTaskItems] = useState([
     {
+      id: 0,
       name: "abby",
       status: false,
-      id: 0,
     },
     {
+      id: 1,
       name: "Nadia",
       status: true,
-      id: 1,
     },
   ]);
 
@@ -33,11 +33,26 @@ function App() {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
+    setTimeout(() => {
+      const inputText = document.querySelector(
+        "#inputAddTaskName"
+      ) as HTMLInputElement;
+      inputText.focus();
+    },1);
   };
 
-  // const addTaskItem = (data: taskType) => {
-  //   setTaskItems((prev) => [...prev, data]);
-  // };
+  const addTaskItem = (name: string) => {
+    console.log(taskItems);
+    const newList = {
+      id: taskItems.length + 1,
+      name: name,
+      status: false,
+    };
+    console.log(newList);
+    setTaskItems((prev) => {
+      return [...prev, newList];
+    });
+  };
 
   return (
     <div className="h-screen flex justify-center items-center">
@@ -52,7 +67,11 @@ function App() {
           </div>
         </div>
         <AddButton modalIsActive={toggleModal} />
-        <Modal isActive={modal} modalIsActive={toggleModal}/>
+        <Modal
+          isActive={modal}
+          modalIsActive={toggleModal}
+          addTask={addTaskItem}
+        />
       </div>
     </div>
   );
