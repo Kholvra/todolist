@@ -1,24 +1,21 @@
-  import type { MouseEvent } from "react";
-  
-  type taskType = {
-    id: number,
-    name: string,
-    status: boolean
-  }
+import type { MouseEvent } from "react";
 
-  type taskProps = {
-    tasks: taskType[],
-    onToggle: (e:MouseEvent<HTMLButtonElement>,id:number)=>void
-  }
+export type taskType = {
+  id: number;
+  name: string;
+  status: boolean;
+};
 
-  function Task({tasks, onToggle}:taskProps) {
+type taskProps = {
+  tasks: taskType[];
+  onToggle: (e: MouseEvent<HTMLButtonElement>, id: number) => void;
+};
 
-
+function Task({ tasks, onToggle }: taskProps) {
   const image = {
     checkmark: "../public/images/checkmark.svg",
     notdone: "../public/images/notdone.svg",
   };
-
 
   const itemList = tasks.map((item) => {
     const bgColor: string = item.status ? "bg-emerald-200" : "bg-stone-200";
