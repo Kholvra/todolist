@@ -41,20 +41,18 @@ function App() {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="relative size-full lg:h-3/4 lg:w-1/4 mx-auto lg:border rounded-md shadow-md">
-        <div className="flex flex-col justify-between">
-          <div className="flex flex-col gap-10 m-5">
-            <div className="flex flex-col gap-2">
-              <h1>Todo List Title</h1>
-              <h2>Todo List Desc</h2>
-            </div>
-            <div>
-              <Task tasks={taskItems} onToggle={toggleTaskStatus} />
-            </div>
+      <div className="relative flex flex-col justify-between size-full lg:h-3/4 lg:w-1/4 mx-auto lg:border rounded-md shadow-md">
+        <div className="flex flex-col gap-10 m-5">
+          <div className="flex flex-col gap-2">
+            <h1>Todo List Title</h1>
+            <h2>Todo List Desc</h2>
           </div>
-          <AddButton modalIsActive={toggleModal} />
+          <div>
+            <Task tasks={taskItems} onToggle={toggleTaskStatus} />
+          </div>
         </div>
-        <Modal isActive={modal} />
+        <AddButton modalIsActive={toggleModal} />
+        <Modal isActive={modal} modalIsActive={toggleModal}/>
       </div>
     </div>
   );
