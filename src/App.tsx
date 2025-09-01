@@ -12,7 +12,7 @@ function App() {
     },
     {
       id: 1,
-      name: "Nadia",
+      name: "halo",
       status: true,
     },
   ]);
@@ -38,31 +38,33 @@ function App() {
         "#inputAddTaskName"
       ) as HTMLInputElement;
       inputText.focus();
-    },1);
+    }, 1);
   };
 
   const addTaskItem = (name: string) => {
     console.log(taskItems);
-    const newList = {
-      id: taskItems.length + 1,
-      name: name,
-      status: false,
-    };
-    console.log(newList);
-    setTaskItems((prev) => {
-      return [...prev, newList];
-    });
+    if (name) {
+      const newList = {
+        id: taskItems.length + 1,
+        name: name,
+        status: false,
+      };
+      console.log(newList);
+      setTaskItems((prev) => {
+        return [...prev, newList];
+      });
+    }
   };
 
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="relative flex flex-col justify-between size-full lg:h-3/4 lg:w-1/4 mx-auto lg:border rounded-md shadow-md">
-        <div className="flex flex-col gap-10 m-5">
+        <div className="flex flex-col gap-10 m-5 h-full overflow-hidden">
           <div className="flex flex-col gap-2">
             <h1>Todo List Title</h1>
             <h2>Todo List Desc</h2>
           </div>
-          <div>
+          <div className="h-3/4 overflow-auto">
             <Task tasks={taskItems} onToggle={toggleTaskStatus} />
           </div>
         </div>

@@ -43,7 +43,7 @@ function Modal({ isActive, modalIsActive, addTask }: toggleProps) {
               id="inputAddTaskName"
               className="border"
             />
-            <button type="submit">Submit</button>
+            <button type="submit" className="cursor-pointer">Submit</button>
           </form>
         </div>
       </div>
