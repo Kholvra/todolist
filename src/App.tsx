@@ -22,13 +22,16 @@ function App() {
     id: number
   ) => {
     console.log(event.currentTarget, id);
-    setTaskItems((prev) =>
-      prev.map((item) => {
-        if (item.id === id) return { ...item, status: !item.status };
-        return item;
-      })
-    );
+    if (event.currentTarget.classList.contains("add")) {
+      setTaskItems((prev) =>
+        prev.map((item) => {
+          if (item.id === id) return { ...item, status: !item.status };
+          return item;
+        })
+      );
+    }
   };
+
 
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
@@ -56,6 +59,13 @@ function App() {
     }
   };
 
+  const removeTaskItem = (e: MouseEvent<HTMLButtonElement>,itemId:number) => {
+    console.log(e.currentTarget);
+    console.log(itemId)
+    const removedItemList = taskItems.filter((item)=>item.id !== itemId)
+    setTaskItems(removedItemList);
+  };
+
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="relative flex flex-col justify-between size-full lg:h-3/4 lg:w-1/4 mx-auto lg:border rounded-md shadow-md">
@@ -65,7 +75,11 @@ function App() {
             <h2>Todo List Desc</h2>
           </div>
           <div className="h-3/4 overflow-auto">
-            <Task tasks={taskItems} onToggle={toggleTaskStatus} />
+            <Task
+              tasks={taskItems}
+              onToggle={toggleTaskStatus}
+              removeTask={removeTaskItem}
+            />
           </div>
         </div>
         <AddButton modalIsActive={toggleModal} />
