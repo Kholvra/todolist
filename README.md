@@ -53,13 +53,21 @@ You need to have Node.js and npm installed on your machine.
 **Installation**
   
   1. Clone the repo
-    git clone https://github.com/your_username/your_repository_name.git
+
+    git clone https://github.com/Kholvra/todolist
+
   2. Navigate to the project directory
-    cd your_repository_name
+    
+    cd todolist
+  
   3. Install NPM packages
+  
     npm install
+  
   4. Run the development server
+  
     npm run dev
+
 The application will be available at http://localhost:5173 (or a similar port).
 
 ## 🌱 Future Improvements
