@@ -21,16 +21,16 @@ function Modal({ isActive, modalIsActive, addTask }: toggleProps) {
   }
 
   const isHidden = isActive ? "block" : "hidden";
-  console.log(isHidden);
 
-  return (
-    <>
+  if (isActive){
+    return (
+          <>
       <div
-        className={`absolute ${isHidden} z-50 inset-0 opacity-30 bg-stone-500`}
+        className={`absolute block z-50 inset-0 opacity-30 bg-stone-500`}
         onClick={modalIsActive}
       ></div>
       <div
-        className={`absolute ${isHidden} z-60 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/ bg-white rounded-lg`}
+        className={`absolute block z-60 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/ bg-white rounded-lg`}
       >
         <div className="p-2">
           <form
@@ -48,7 +48,11 @@ function Modal({ isActive, modalIsActive, addTask }: toggleProps) {
         </div>
       </div>
     </>
-  );
+    )
+  }
+
+  console.log(isHidden);
+
 }
 
 export default Modal;
